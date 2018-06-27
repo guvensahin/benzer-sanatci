@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www.benzersanatci.com [NC]
+RewriteRule ^(.*)$ http://benzersanatci.com/$1 [R=301]
+RewriteRule ^index\.php/?$ http://benzersanatci.com [NC,L,R]

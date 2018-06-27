@@ -1,0 +1,662 @@
+/**
+ * yazar			Güven ŞAHİN <guvenn@hotmail.com.tr>
+ * web				http://guven.kimdir.com
+ * son güncelleme	12 Eylül 2012
+ */
+
+
+/*-------------------------------------- genel --------------------------------------*/
+body
+{
+	background:#f5f5f5;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:13px;
+	line-height:25px;
+	color:#333;
+}
+
+.clear
+{
+	clear:both;
+}
+a
+{
+	color:#0091ed;
+	text-decoration:none;
+}
+p
+{
+	margin-bottom:30px;
+}
+h2
+{
+	font-family:"Century Gothic", Arial;
+}
+
+
+/*-------------------------------------- iskelet --------------------------------------*/
+
+#container
+{
+	width:880px;
+	margin:0 auto;
+	background:#fff;
+	padding:30px 0 170px 0;
+	box-shadow:0 0 5px #ddd;
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+}
+
+#header, #content
+{
+	width:820px;
+	margin:0 30px 0 30px;
+}
+
+#header
+{
+	margin-bottom:30px;
+	min-height:110px;
+}
+
+
+#footer
+{
+	clear:both;
+	width:820px;
+	margin:0 auto;
+	min-height:250px;
+	margin-top:60px;
+}
+
+#share_area
+{
+	width:945px;
+	margin:0 auto;
+	padding:15px 0 10px 0;
+	overflow:hidden;
+}
+
+
+/*-------------------------------------- share_area --------------------------------------*/
+
+
+.social_top
+{
+	float:right;
+	width:415px;
+	height:30px;
+	overflow:hidden;
+}
+
+
+
+/*-------------------------------------- header --------------------------------------*/
+
+.logo
+{
+	width:250px;
+	height:60px;
+	float:left;
+	overflow:hidden;
+}
+
+.menu
+{
+	float:right;
+}
+
+
+/* navigation */
+#nav ul
+{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	overflow:hidden;
+	border-bottom:1px solid #f3f3f3;
+}
+
+#nav li
+{
+	margin:0;
+	padding:0;
+	float:left;
+}
+
+#nav li a
+{
+	display:block;
+	text-decoration:none;
+	color:#444;
+	font-family:"Century Gothic", Arial;
+	padding:22px 11px 10px 11px;
+	border-right:1px solid #f9f9f9;
+}
+
+#nav li a.last_item
+{
+	border-right:none;
+}
+
+#nav li a:hover
+{
+	text-decoration:none;
+}
+
+
+
+/*-------------------------------------- footer --------------------------------------*/
+
+.copyright
+{
+	float:left;
+	width:490px;
+	color:#999;
+}
+
+.social
+{
+	float:right;
+	width:300px;
+}
+
+.social .share_facebook
+{
+	width:300px;
+	overflow:hidden;
+}
+
+
+
+/*-------------------------------------- content --------------------------------------*/
+
+/******************* result.php *******************/
+
+/* benzer sanatçıların her birini içeren kutu */
+.box
+{
+	border-bottom:1px solid #eee;
+	padding-bottom:30px;
+	margin-bottom:30px;
+}
+
+/* sanatçının resmini içerir */
+.left
+{
+	float:left;
+	width:190px; /* 190 x 145 */
+	height:145px;
+	overflow:hidden;
+	box-shadow:0 0 2px #7d7d7d;
+	background:#000;
+}
+.left img
+{
+	display:block;
+	width:190px;
+}
+
+/* sanatçının bilgilerini içerir */
+.right
+{
+	float:right;
+	width:600px;
+}
+
+
+
+.box h2
+{
+	font-family:'Ubuntu', Arial, sans-serif;
+}
+
+.box h2 a
+{
+	text-decoration:none;
+	color:#333;
+}
+.box h2 a:hover
+{
+	background:#f5f5f5;
+}
+.box p
+{
+	margin:0;
+	padding:0;
+}
+
+
+
+/* result.php de 'benzeri' aranan sanatçı */
+.overview
+{
+	margin-bottom:60px;
+}
+.overview h1
+{
+	margin:0;
+	padding:0;
+	font-family: 'Jura', Arial, sans-serif;
+	color:#E6067C;
+	font-size:22px;
+}
+
+
+
+/* result.php de benzer sanatçıyı araştırmayı sağlayan linkler */
+p.helpers {margin-bottom:10px;}
+
+p.helpers a
+{
+	display:inline-block;
+	padding:2px 10px;
+	color:#999;
+	font-size:12px;
+	line-height:normal;
+	background:#EBEBEB;
+	border-radius:3px;
+}
+
+p.helpers a:hover,
+p.helpers a.ybelirtec:hover
+{
+	background:#ddd;
+}
+
+p.helpers a.ybelirtec
+{
+	background:#FFCCE6;
+	color:#666;
+}
+
+
+
+
+
+/* result.php de youtube videolarını saklayan linkleri içerir */
+.gizli { display:none; }
+
+
+
+/* result.php de .overview'in sağındaki linki paylaş fasilitesi */
+.share_url
+{
+	width:310px;
+	color:#666;
+	background:#fff;
+}
+.share_url span
+{
+	margin-left:15px;
+	font-style:italic;
+	font-size:12px;
+	display:none;
+}
+.share_input
+{
+	display:block;
+	width:268px;
+	margin:0 0 3px 0;
+	padding:9px;
+	background:#fff;
+	border:0;
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size:12px;
+	color:#999;
+	box-shadow:inset 0 0 3px #ccc;
+}
+
+
+
+
+
+/******************* index.php *******************/
+
+/* anasayfadaki arama kutusu */
+.search-box
+{
+	margin:0 auto;
+	width:600px;
+}
+.search-box p
+{
+	display:block;
+	margin-bottom:40px;
+	margin-top:20px;
+}
+
+/* Ör: Evanescence yazan kutu */
+.example
+{
+	width:311px;
+	margin:5px 0 0 65px;
+	font-size:11px;
+	color:#bbb;
+}
+
+.search-element-highlight
+{
+	padding:30px 0 20px 0;
+}
+
+.search-element-kapsul
+{
+	width:480px; /* 471 hesapladım tam olarak*/
+	margin:0 auto;
+	overflow:hidden;
+}
+
+.search-button-kapsul
+{
+	float:left;
+}
+
+.search-input-kapsul
+{
+	width:303px;
+	overflow:hidden;
+	padding:3px;
+	border:1px solid #d9d9d9;
+	background:#f0f0f0;
+	border-radius:4px;
+	float:left;
+	margin-right:5px;
+}
+.search-input
+{
+	border:1px solid #c7c7c7;
+	background:#fff;
+	width:285px;
+	padding:6px 8px;
+	outline:0;
+	font-size:13px;
+	color:#747472;
+	border-radius: 3px;
+	font-family:Verdana, Geneva, sans-serif;
+}
+
+
+/* anasayfadaki arama butonumuz */
+
+/* clean gray
+*******************************************************************************/
+button.clean-gray {
+  background-color: #eeeeee;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eeeeee), color-stop(100%, #cccccc));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);
+  background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
+  background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);
+  background-image: -o-linear-gradient(top, #eeeeee, #cccccc);
+  background-image: linear-gradient(top, #eeeeee, #cccccc);
+  border: 1px solid #ccc;
+  border-bottom: 1px solid #bbb;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  color: #333;
+  font: bold 11px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  line-height: 1;
+  padding: 11px 0;
+  text-align: center;
+  text-shadow: 0 1px 0 #eee;
+  width: 80px; }
+  button.clean-gray:hover {
+    background-color: #dddddd;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dddddd), color-stop(100%, #bbbbbb));
+    background-image: -webkit-linear-gradient(top, #dddddd, #bbbbbb);
+    background-image: -moz-linear-gradient(top, #dddddd, #bbbbbb);
+    background-image: -ms-linear-gradient(top, #dddddd, #bbbbbb);
+    background-image: -o-linear-gradient(top, #dddddd, #bbbbbb);
+    background-image: linear-gradient(top, #dddddd, #bbbbbb);
+    border: 1px solid #bbb;
+    border-bottom: 1px solid #999;
+    cursor: pointer;
+    text-shadow: 0 1px 0 #ddd; }
+  button.clean-gray:active {
+    border: 1px solid #aaa;
+    border-bottom: 1px solid #888;
+    -webkit-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+    -moz-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+    box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee; }
+
+
+
+
+
+
+
+
+
+
+
+
+/* anasayfada arama kutusu altındaki resimler */
+.random-kapsul
+{
+	width:564px;
+	height:84px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.random
+{
+	float:left;
+	width:126px;
+	height:84px;
+	overflow:hidden;
+	box-shadow:0 0 2px #7d7d7d;
+	background:#000;
+	margin-right:7px;
+	margin-left:7px;
+}
+
+.random img
+{
+	display:block;
+	width:126px;
+}
+
+
+
+/* suggestbox */
+.ui-autocomplete
+{
+	margin:0;
+	padding:0;
+	border:0;
+	list-style-type:none;
+	display:block;
+	width:285px;
+	background:#f5f5f5;
+	box-shadow:0 0 2px #7d7d7d;
+	position:absolute;
+}
+
+.ui-autocomplete li
+{
+	margin:0;
+	padding:0;
+	border:0;
+}
+
+.ui-autocomplete li a
+{
+	display:block;
+	padding:5px 5px 5px 10px;
+	color:#333;
+	font-size:12px;
+	line-height:18px;
+	font-weight:bold;
+}
+
+.ui-autocomplete li a:hover, #ui-active-menuitem
+{
+	background:#5297FF;
+	cursor:pointer;
+	color:#fff;
+}
+
+.suggest-img
+{
+	float:left;
+	width:40px;
+	height:35px;
+	overflow:hidden;
+	margin-right:10px;
+	/*box-shadow:0 0 1px #7d7d7d;*/
+}
+.suggest-img img
+{
+	display:block;
+	width:40px;
+}
+
+
+
+/******************* lists.php *******************/
+
+.list-left { float:left; }
+.list-right { float:right; }
+.list-right .list-item { background:#F0F8FF; }
+
+.list-item
+{
+	width:375px;
+	background:#f5f5f5;
+	padding:10px;
+	margin-bottom:10px;
+	border-top-right-radius:12px;
+	border-bottom-right-radius:12px;
+}
+
+.list-item-left
+{
+	float:left;
+	width:100px;
+	height:75px;
+	overflow:hidden;
+	box-shadow:0 0 2px #7d7d7d;
+	background:#000;
+}
+.list-item-left img
+{
+	display:block;
+	width:100px;
+}
+
+.list-item-right
+{
+	float:right;
+	width:265px;
+}
+.list-item-right a, .list-item-single a
+{
+	color:#333;
+	font-weight:bold;
+}
+.list-item-right span, .list-item-single span
+{
+	display:block;
+	color:#ccc;
+	font-style:italic;
+	font-size:12px;
+}
+
+.list-item-single span
+{
+	display:inline;
+	margin-left:10px;
+}
+
+
+
+/******************* about.php *******************/
+
+.about h2
+{
+	font-family:"Century Gothic", Arial;
+	color:#888;
+	margin-bottom:20px;
+	margin-top:40px;
+}
+
+.about h2.first
+{
+	margin-top:0;
+}
+
+
+.about p
+{
+	font-family:Georgia, "Times New Roman", Times, serif;
+	color:#888;
+	font-size:16px;
+	margin-bottom:20px;
+}
+
+
+
+
+
+/******************* contact.php *******************/
+span.loader
+{
+	margin-left:10px;
+}
+
+
+
+
+
+
+/*-------------------------------------- form --------------------------------------*/
+
+label
+{
+	display:block;
+}
+
+fieldset
+{
+	margin:0;
+	padding:0;
+	border:0;
+}
+
+.contact-input, .contact-textarea
+{
+	width:200px;
+	display:block;
+	margin-bottom:20px;
+	padding:7px;
+	background:#f5f5f5;
+	border:1px solid #ddd;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:13px;
+	color:#333;
+}
+.contact-textarea
+{
+	width:375px;
+	height:190px;
+	line-height:22px;
+	padding:7px 10px;
+}
+.contact-button
+{
+	padding:3px 4px;
+	outline:0;
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,74 @@
+{include file="header.tpl"}
+
+
+<div class="gizli">
+<a class="y0" href="#" rel="prettyphoto" title="{$similar.name.0|escape:'html'}">ylink 0</a>
+<a class="y1" href="#" rel="prettyphoto" title="{$similar.name.1|escape:'html'}">ylink 1</a>
+<a class="y2" href="#" rel="prettyphoto" title="{$similar.name.2|escape:'html'}">ylink 2</a>
+<a class="y3" href="#" rel="prettyphoto" title="{$similar.name.3|escape:'html'}">ylink 3</a>
+<a class="y4" href="#" rel="prettyphoto" title="{$similar.name.4|escape:'html'}">ylink 4</a>
+</div>
+
+
+<div class="overview">
+
+<div class="list-left">
+	<div class="list-item">
+    	<div class="list-item-left"><img class="similar_search" src="" alt="{$similar.search|escape:'html'}" /></div>
+        <div class="list-item-right"><h1 class="similar_search">{$similar.search|escape:'html'}</h1><span>benzeri sanatçılar</span></div>
+        <div class="clear"></div>
+    </div><!-- end list item -->
+</div><!-- end list left -->
+
+
+<div class="list-right">
+	<div class="share_url">bu sanatçıyı paylaş
+    	<input type="text" class="share_input" id="share_input" value="{$similar.searched_share_url}" />
+        <a href="#" id="kopyala">kopyala</a>
+        <span id="share_url_msg">hafızaya kopyalandı !</span>
+	</div>
+</div><!-- end list right -->
+
+
+<div class="clear"></div>
+</div><!-- end overview -->
+
+
+
+{section name=foo loop=$similar.name}
+
+<div class="box">
+<div class="left">
+	<a class="sekme" href="{$similar.mega[foo]}"><img src="{$similar.extralarge[foo]}" alt="{$similar.name[foo]|escape:'html'}" /></a>
+</div>
+
+<div class="right">
+	<h2 class="similar_artist"><a class="name{$smarty.section.foo.index}" href="{$similar.share_url[foo]}">{$similar.name[foo]|escape:'html'}</a></h2>
+	
+    <p class="helpers">
+    <a class="ybelirtec" href="#" onclick="return get_video('{$smarty.section.foo.index}');" title="Youtube'daki en popüler müzik videosunu izle">İzle / Dinle</a>
+    <a class="sekme" href="http://www.google.com.tr/search?q={$similar.name[foo]|escape:'url'}" title="Google'da Ara">Google</a>
+    <a class="sekme" href="http://tr.wikipedia.org/?search={$similar.name[foo]|escape:'url'}" title="Wikipedia'da Ara">Wikipedia</a>
+    <a class="sekme" href="http://www.eksisozluk.com/show.asp?t={$similar.name[foo]|escape:'url'}" title="Ekşi Sözlük'de Ara">Ekşi Sözlük</a>
+    <a class="sekme" href="http://www.youtube.com/results?search_query={$similar.name[foo]|escape:'url'}" title="Youtube'da Ara">Youtube</a>
+    <a class="sekme" href="http://{$similar.url[foo]}" title="Lastfm profiline bak">Lastfm</a>
+    </p>
+	
+    <p class="bio{$smarty.section.foo.index}"></p>
+</div><!-- end right -->
+
+<div class="clear"></div>
+</div><!-- end box -->
+
+{/section}
+
+
+
+<div class="box">Hey ! İstersen <a href="./lists.php">Listeler</a> sayfasında en son görüntülenen sanatçılara göz atabilirsin.</div>
+
+
+
+
+{include file="footer.tpl"}
+
+

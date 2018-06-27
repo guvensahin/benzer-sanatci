@@ -1,0 +1,43 @@
+{include file="header.tpl"}
+
+<div class="about">
+
+
+<h2 class="first">hakkında</h2>
+
+<p>{$site.adres} size yeni şarkılar keşfetmenizde yardımcı olur. Peki bunu nasıl yapar ?</p>
+
+<p>Hâlihazırda sevdiğiniz ve dinlediğiniz bir sanatçının ismini yazdığınızda, size aynı müzik tarzına sahip benzer sanatçılar öneririz. Bu sayede sevdiğiniz müzik tarzına uygun yeni sanatçıları ve grupları keşfedebilirsiniz. Keşfettiğiniz her yeni sanatçı aynı zamanda size yepyeni güzel şarkılarla tanışma fırsatı sağlayacaktır.</p>
+
+<p>Bir örnek vermek gerekirse <a href="http://{$site.adres}/result.php?q=evanescence">Evanescence</a> seviyor ve dinliyorsanız; <a href="http://{$site.adres}/result.php?q=within+temptation">Within Temptation</a>, <a href="http://{$site.adres}/result.php?q=we+are+the+fallen">We Are The Fallen</a>, <a href="http://{$site.adres}/result.php?q=epica">Epica</a> ... gibi benzer tarza sahip müzik gruplarını size önererek yeni sanatçılar dolayısıyle yeni şarkılara ulaşmanızı amaçlıyoruz !</p>
+
+<p>Uygulama içerisinde yer alan çeşitli kısa yollarla keşfettiğiniz yeni sanatçıları araştırmanız çok kolaydır. Tek tıkla daha önce dinlemediğiniz bir grubun müzik ve videolarına ulaşabilir, tarihçesine bakabilir, albümlerini inceleyebilir, dinleyicilerinin yorumlarına göz atabilirsiniz.</p>
+
+<p>İstersen hemen <a href="http://{$site.adres}">anasayfaya</a> dönüp yeni şarkıları keşfe çıkabilir veya <a href="./lists.php">bu adresten</a> en son görüntülenen sanatçılara bakabilirsin.</p>
+
+<h2>destek</h2>
+
+<p>Bize yardımcı olmak ister misiniz ? <a href="javascript:void(0);" onclick="return donate();" title="paypal kullanarak bağışta bulunun">Bağışta bulunun.</a></p>
+
+
+
+
+
+</div><!-- end about -->
+
+
+
+
+
+
+<!-- paypal -->
+<form id="donate" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick" />
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+" />
+</form>
+
+
+
+
+{include file="footer.tpl"}

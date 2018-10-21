@@ -1,5 +1,5 @@
 <?php
-require_once('inc/ayar.php');
+require_once('inc/config.php');
 require_once('inc/class.lastfm.php');
 
 	$lfm = new Lastfm; // lastfm api helper

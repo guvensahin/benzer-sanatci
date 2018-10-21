@@ -1,13 +1,7 @@
 <?php
+require_once('inc/sensitive.php');
 header('Content-Type:text/html; charset=utf-8');
 date_default_timezone_set('Europe/Istanbul');
-
-// veritabanı bilgileri
-// TODO db bilgileri girilecek
-$db_host	= 'DBHOST';
-$db_user	= 'DBUSER';
-$db_pass	= 'DBPASS';
-$db_name	= 'DBNAME';
 
 
 // tema

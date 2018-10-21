@@ -26,7 +26,7 @@ class Lastfm
 	 */
 	public function __construct()
 	{
-		$this->api_key = 'LASTFMAPIKEY'; // TODO lastfm api bilgileri girilecek
+		$this->api_key = $lastfm_api_key;
 		
 		global $db;
 		$this->db = $db;

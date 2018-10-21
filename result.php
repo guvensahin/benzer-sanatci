@@ -1,5 +1,5 @@
 <?php
-require_once('inc/ayar.php');
+require_once('inc/config.php');
 require_once('inc/class.lastfm.php');
 require_once('inc/form_dogrula/eb.formDogrula.php');
 require_once('inc/func.lastfm_query_replace.php');

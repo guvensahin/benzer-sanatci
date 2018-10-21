@@ -1,7 +1,7 @@
 <?php
 /**
- * yazar			Güven ŞAHİN <guvenn@hotmail.com.tr>
- * web				http://guven.kimdir.com
+ * yazar			Güven ŞAHİN <guvensahin@outlook.com>
+ * web				http://guvensahin.com
  * son güncelleme	22 Haziran 2012
  */
 

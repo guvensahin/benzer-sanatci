@@ -6,9 +6,9 @@
  * son güncelleme: 11 Ekim 2011
  *
  * @package		Sayfala
- * @author		Güven ŞAHİN <guvenn@hotmail.com.tr>
+ * @author		Güven ŞAHİN <guvensahin@outlook.com>
  * @copyright	Copyright (c) 2011, Güven ŞAHİN
- * @link		http://guven.kimdir.com
+ * @link		http://guvensahin.com
  */
 
 // ------------------------------------------------------------------------

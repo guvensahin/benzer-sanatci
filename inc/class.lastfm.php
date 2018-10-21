@@ -366,19 +366,11 @@ class Lastfm
 			{
 				$datetime = date('Y-m-d H:i:s');
 			
-				// kontrol edilir
-				$exist = $this->db->get_var("select ArtistName from LastViewed where ArtistName = '$name'") != "";
-				
-				// update
-				if ($exist)
-				{
-					$this->db->query("update LastViewed set DateTime = '$datetime' where ArtistName = '$name'");
-				}
-				// insert
-				else
-				{
-					$this->db->query("insert into LastViewed (ArtistName, DateTime) values ('$name', '$datetime')");
-				}
+				// log atılır
+				$this->db->query("insert into LastViewed (ArtistName, DateTime) values ('$name', '$datetime')");
+
+				// son 20 kayıt hatiç silinir
+				$this->db->query("delete from LastViewed order by DateTime asc limit 20");
 			}
 		}
 	}

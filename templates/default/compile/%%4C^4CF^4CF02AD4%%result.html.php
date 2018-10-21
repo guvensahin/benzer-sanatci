@@ -9,18 +9,7 @@ unset($_smarty_tpl_vars);
  ?>
 
 
-<div class="gizli">
-<a class="y0" href="#" rel="prettyphoto" title="<?php echo ((is_array($_tmp=$this->_tpl_vars['similar']['name']['0'])) ? $this->_run_mod_handler('escape', true, $_tmp, 'html') : smarty_modifier_escape($_tmp, 'html')); ?>
-">ylink 0</a>
-<a class="y1" href="#" rel="prettyphoto" title="<?php echo ((is_array($_tmp=$this->_tpl_vars['similar']['name']['1'])) ? $this->_run_mod_handler('escape', true, $_tmp, 'html') : smarty_modifier_escape($_tmp, 'html')); ?>
-">ylink 1</a>
-<a class="y2" href="#" rel="prettyphoto" title="<?php echo ((is_array($_tmp=$this->_tpl_vars['similar']['name']['2'])) ? $this->_run_mod_handler('escape', true, $_tmp, 'html') : smarty_modifier_escape($_tmp, 'html')); ?>
-">ylink 2</a>
-<a class="y3" href="#" rel="prettyphoto" title="<?php echo ((is_array($_tmp=$this->_tpl_vars['similar']['name']['3'])) ? $this->_run_mod_handler('escape', true, $_tmp, 'html') : smarty_modifier_escape($_tmp, 'html')); ?>
-">ylink 3</a>
-<a class="y4" href="#" rel="prettyphoto" title="<?php echo ((is_array($_tmp=$this->_tpl_vars['similar']['name']['4'])) ? $this->_run_mod_handler('escape', true, $_tmp, 'html') : smarty_modifier_escape($_tmp, 'html')); ?>
-">ylink 4</a>
-</div>
+
 
 
 <div class="overview">

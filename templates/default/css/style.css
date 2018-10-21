@@ -258,18 +258,7 @@ p.helpers a
 	border-radius:3px;
 }
 
-p.helpers a:hover,
-p.helpers a.ybelirtec:hover
-{
-	background:#ddd;
-}
-
-p.helpers a.ybelirtec
-{
-	background:#FFCCE6;
-	color:#666;
-}
-
+p.helpers a:hover
 
 
 

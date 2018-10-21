@@ -39,18 +39,6 @@ $(function(){
 	});
 	
 	
-	
-	// zclip
-	$('a#kopyala').zclip({
-		path : 'inc/js/zclip/ZeroClipboard.swf',
-		copy : $('input#share_input').val(),
-		afterCopy : function(){
-			$('span#share_url_msg').css('display','inline').hide().fadeIn('slow');
-			}
-	});	
-	
-	
-	
 	// target blank
 	$('a.sekme').attr('target','_blank');
 	

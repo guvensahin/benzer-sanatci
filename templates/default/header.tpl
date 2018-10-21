@@ -15,7 +15,6 @@
 <link rel="stylesheet" type="text/css" href="./templates/default/css/style.css" />
 <link rel="stylesheet" type="text/css" href="./templates/default/css/mBox/css.css" />
 <link rel="stylesheet" type="text/css" href="./inc/js/poshytip-1.1/tip-twitter/tip-twitter.css" />
-<link rel="stylesheet" type="text/css" href="./inc/js/prettyPhoto/prettyPhoto.css" />
 <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css' />
 <link href='http://fonts.googleapis.com/css?family=Jura&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css' />
 
@@ -23,9 +22,7 @@
 <script type="text/javascript" src="./inc/js/jquery-1.6.4.min.js"></script>
 <script type="text/javascript" src="./inc/js/jquery-ui-1.8.16.custom.min.js"></script>
 <script type="text/javascript" src="./inc/js/poshytip-1.1/jquery.poshytip.min.js"></script>
-<script type="text/javascript" src="./inc/js/prettyPhoto/jquery.prettyPhoto.js"></script>
 <script type="text/javascript" src="./inc/js/jquery.timeago.js"></script>
-<script type="text/javascript" src="./inc/js/zclip/jquery.zclip.min.js"></script>
 <script type="text/javascript" src="./inc/js/custom.js"></script>
 {$autocomplete}
 

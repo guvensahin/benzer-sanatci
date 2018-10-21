@@ -29,7 +29,6 @@ CREATE TABLE IF NOT EXISTS `artists` (
   `artist_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `artist_name` varchar(250) NOT NULL,
   `artist_datetime` datetime NOT NULL,
-  `artist_count` int(11) NOT NULL,
   PRIMARY KEY (`artist_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 

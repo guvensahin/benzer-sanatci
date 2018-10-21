@@ -47,15 +47,6 @@
 
 
 {literal}
-<!-- pretty photo -->
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("a[rel^='prettyPhoto']").prettyPhoto();
-  });
-</script>
-
-
-
 
 <!-- AddThis -->
 <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>

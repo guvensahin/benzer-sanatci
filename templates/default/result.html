@@ -37,10 +37,11 @@
     <p class="helpers">
         <a class="sekme" href="https://www.youtube.com/results?search_query={$similar.name[foo]|escape:'url'}" title="Youtube'da Ara">Youtube</a>
         <a class="sekme" href="https://open.spotify.com/search/results/{$similar.name[foo]|escape:'url'}" title="Spotify'da Ara">Spotify</a>
+        <a class="sekme" href="https://www.deezer.com/search/{$similar.name[foo]|escape:'url'}" title="Deezer'da Ara">Deezer</a>
         <a class="sekme" href="https://www.google.com.tr/search?q={$similar.name[foo]|escape:'url'}" title="Google'da Ara">Google</a>
         <a class="sekme" href="https://tr.wikipedia.org/?search={$similar.name[foo]|escape:'url'}" title="Wikipedia'da Ara">Wikipedia</a>
-        <a class="sekme" href="https://www.eksisozluk.com/show.asp?t={$similar.name[foo]|escape:'url'}" title="Ekşi Sözlük'de Ara">Ekşi Sözlük</a>
         <a class="sekme" href="{$similar.url[foo]}" title="Lastfm profiline bak">Lastfm</a>
+        <a class="sekme" href="https://www.eksisozluk.com/show.asp?t={$similar.name[foo]|escape:'url'}" title="Ekşi Sözlük'de Ara">Ekşi Sözlük</a>
     </p>
 	
     <p class="bio{$smarty.section.foo.index}"></p>

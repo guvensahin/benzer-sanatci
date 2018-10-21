@@ -1,10 +1,10 @@
 # benzer sanatçı
-http://benzersanatci.com adresinde yayın yapan sitenin kaynak kodlarıdır.
+http://benzersanatci.guvensahin.com adresinde yayın yapan sitenin kaynak kodlarıdır.
 
 ## Hakkında
-http://benzersanatci.com/about.php
+http://benzersanatci.guvensahin.com/about.php
 
-benzersanatci.com size yeni şarkılar keşfetmenizde yardımcı olur. Peki bunu nasıl yapar ?
+benzer sanatçı size yeni şarkılar keşfetmenizde yardımcı olur. Peki bunu nasıl yapar ?
 
 Hâlihazırda sevdiğiniz ve dinlediğiniz bir sanatçının ismini yazdığınızda, size aynı müzik tarzına sahip benzer sanatçılar öneririz. Bu sayede sevdiğiniz müzik tarzına uygun yeni sanatçıları ve grupları keşfedebilirsiniz. Keşfettiğiniz her yeni sanatçı aynı zamanda size yepyeni güzel şarkılarla tanışma fırsatı sağlayacaktır.
 

@@ -17,7 +17,7 @@ $tema_admin = 'default';
 
 // genel ayarlar
 $site['isim']	= 'benzer sanatçı';
-$site['adres'] 	= 'benzersanatci.com';
+$site['adres'] 	= 'benzersanatci.guvensahin.com';
 
 $description = 'Sevdiğiniz sanatçıların benzerlerini bularak yeni şarkılar, sanatçılar ve müzik grupları keşfetmenize yardımcı olur.';
 $keywords	 = 'benzer sanatçılar, müzik önerileri, müzik keşfet, benzer müzikler, müzik tarzı, müzik türü, yeni gruplar, müzik grupları, şarkı önerileri, benzer şarkılar';

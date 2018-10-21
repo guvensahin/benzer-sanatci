@@ -17,7 +17,7 @@ else
 	$smarty->assign('list_r',$toplist);
 	
 	// list left
-	$results = $db->get_results("select * from last_viewed order by datetime desc limit 0,10 ");
+	$results = $db->get_results("select * from last_viewed order by datetime desc limit 0,15");
 
 	if ($results != null)
 	{

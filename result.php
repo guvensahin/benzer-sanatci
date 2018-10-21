@@ -29,7 +29,7 @@ if ($_POST)
 		
 		if (!empty($mbid))
 		{
-			$similar = $lfm->get_similar('',$mbid,5);
+			$similar = $lfm->get_similar('',$mbid, 8);
 		}
 		else
 		{
@@ -40,7 +40,7 @@ if ($_POST)
 			$artist = lastfm_query_replace($artist);
 			
 			// benzer sanatçılar
-			$similar = $lfm->get_similar($artist,'',5);
+			$similar = $lfm->get_similar($artist,'', 8);
 		}
 	}
 }
@@ -67,7 +67,7 @@ elseif (isset($_GET['q']))
 		$artist = lastfm_query_replace($artist);
 		
 		// benzer sanatçılar
-		$similar = $lfm->get_similar($artist,'',5);
+		$similar = $lfm->get_similar($artist,'', 8);
 	}
 }
 else

@@ -381,7 +381,7 @@ class Lastfm
 					$this->db->query("insert into last_viewed (name, datetime) values ('$name', '$datetime')");
 				}
 			
-				// son 10 kayıt hariç silinir
+				// son 15 kayıt hariç silinir
 				$this->db->query("
 							DELETE FROM last_viewed
 								WHERE name NOT IN (
@@ -390,7 +390,7 @@ class Lastfm
 									SELECT name
 									FROM last_viewed
 									ORDER BY datetime DESC
-									LIMIT 10 -- keep this many records
+									LIMIT 15 -- keep this many records
 								  ) foo
 								);
 				");
@@ -402,10 +402,10 @@ class Lastfm
 	 * lastfm'de en çok dinlenen sanatçıları bulur
 	 *
 	 * @param string $country ülke
-	 * @param int $limit döndürülecek sonuç sayısı.varsayılan olarak 10.
+	 * @param int $limit döndürülecek sonuç sayısı.varsayılan olarak 15.
 	 * @return array
 	 */
-	public function get_top_artists_2($country='united states',$limit=10)
+	public function get_top_artists_2($country='united states',$limit=15)
 	{
 		$post_fields = "method=geo.gettopartists&country=$country&limit=$limit";
 		

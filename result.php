@@ -5,6 +5,7 @@ require_once('inc/form_dogrula/eb.formDogrula.php');
 require_once('inc/func.lastfm_query_replace.php');
 require_once('inc/func.smart_desc.php');
 
+$result_num = 10;
 
 if ($_POST)
 {
@@ -29,7 +30,7 @@ if ($_POST)
 		
 		if (!empty($mbid))
 		{
-			$similar = $lfm->get_similar('',$mbid, 8);
+			$similar = $lfm->get_similar('',$mbid, $result_num);
 		}
 		else
 		{
@@ -40,7 +41,7 @@ if ($_POST)
 			$artist = lastfm_query_replace($artist);
 			
 			// benzer sanatçılar
-			$similar = $lfm->get_similar($artist,'', 8);
+			$similar = $lfm->get_similar($artist,'', $result_num);
 		}
 	}
 }
@@ -67,7 +68,7 @@ elseif (isset($_GET['q']))
 		$artist = lastfm_query_replace($artist);
 		
 		// benzer sanatçılar
-		$similar = $lfm->get_similar($artist,'', 8);
+		$similar = $lfm->get_similar($artist,'', $result_num);
 	}
 }
 else

@@ -36,26 +36,11 @@
 
 
 <div id="share_area">
-<div class="social_top">
+	<div class="social_top">
 
+		<div class="addthis_inline_share_toolbox"></div> 
 
-
-<!-- AddThis Button BEGIN -->
-<div class="addthis_toolbox addthis_default_style">
-
-<a addthis:url="http://{$site.adres}" class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-<a addthis:url="http://{$site.adres}" class="addthis_button_tweet"></a>
-<a addthis:url="http://{$site.adres}" class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-<a addthis:url="http://{$site.adres}" class="addthis_button_stumbleupon_badge"></a>
-
-</div>
-<!-- AddThis Button END -->
-
-
-
-</div><!-- end social_top -->
-<div class="clear"></div>
-
+	</div><!-- end social_top -->
 
 </div><!-- end share_area -->
 

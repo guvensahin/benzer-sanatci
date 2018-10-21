@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Oct 21, 2018 at 05:45 PM
--- Server version: 5.6.35-log
--- PHP Version: 5.6.30
+-- Anamakine: localhost:3306
+-- Üretim Zamaný: 21 Eki 2018, 17:52:13
+-- Sunucu sürümü: 10.1.36-MariaDB
+-- PHP Sürümü: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,30 +19,31 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bsdb`
+-- Veritabaný: `guvensa1_benzersanatci`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lastviewed`
+-- Tablo için tablo yapýsý `last_viewed`
 --
 
-CREATE TABLE `lastviewed` (
-  `ArtistName` varchar(255) NOT NULL,
-  `DateTime` datetime NOT NULL
+CREATE TABLE `last_viewed` (
+  `name` varchar(255) NOT NULL,
+  `datetime` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Indexes for dumped tables
+-- Dökümü yapýlmýþ tablolar için indeksler
 --
 
 --
--- Indexes for table `lastviewed`
+-- Tablo için indeksler `last_viewed`
 --
-ALTER TABLE `lastviewed`
-  ADD PRIMARY KEY (`ArtistName`),
-  ADD UNIQUE KEY `ArtistName_UNIQUE` (`ArtistName`);
+ALTER TABLE `last_viewed`
+  ADD PRIMARY KEY (`name`),
+  ADD UNIQUE KEY `name` (`name`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

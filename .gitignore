@@ -334,4 +334,4 @@ ASALocalRun/
 .localhistory/
 
 # custom
-sensitive.php
+config_sensitive.php

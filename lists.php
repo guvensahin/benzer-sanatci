@@ -17,29 +17,27 @@ else
 	$smarty->assign('list_r',$toplist);
 	
 	// list left
-	$results = $db->get_results("select * from LastViewed order by DateTime desc limit 0,10 ");
-	$smarty->assign('results',$results);
-	
-	// saatleri iso8601 formatına uygun hale getiriyoruz
-	// aynı zamanda share url leri oluşturuyoruz
-	foreach ($results as $row)
+	$results = $db->get_results("select * from last_viewed order by datetime desc limit 0,10 ");
+
+	if ($results != null)
 	{
-		// datetime
-		$datetime = preg_replace('/ /', 'T', $row->DateTime, 1);
-		$art['datetime'][] = $datetime . '';
-		
-		// share url
-		$art['share_url'][] = share_url($row->ArtistName);
-	}
-	$smarty->assign('art',$art);
+		$smarty->assign('results',$results);
 	
+		// saatleri iso8601 formatına uygun hale getiriyoruz
+		// aynı zamanda share url leri oluşturuyoruz
+		foreach ($results as $row)
+		{
+			// datetime
+			$datetime = preg_replace('/ /', 'T', $row->datetime, 1);
+			$art['datetime'][] = $datetime . '';
+		
+			// share url
+			$art['share_url'][] = share_url($row->name);
+		}
+		$smarty->assign('art',$art);
+	}
 	
 	$smarty->display('lists.html');
 }
-
-
-
-
-
 
 ?>

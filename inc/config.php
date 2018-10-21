@@ -1,8 +1,11 @@
 <?php
-require_once('inc/sensitive.php');
 header('Content-Type:text/html; charset=utf-8');
 date_default_timezone_set('Europe/Istanbul');
 
+// show errors
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+//error_reporting(E_ALL);
 
 // tema
 $tema_site	= 'default';
@@ -29,7 +32,9 @@ $smarty_position = 1;
 require_once('ez_sql/ez_sql_core.php');  // ezSQL çekirdeği.
 require_once('ez_sql/ez_sql_mysql.php'); // ezSQL mysql bileşeni.
 
-$db = new ezSQL_mysql($db_user,$db_pass,$db_name,$db_host);
+
+$configs = include('config_sensitive.php');
+$db = new ezSQL_mysql($configs['db_user'], $configs['db_pass'], $configs['db_name'], $configs['db_host']);
 //$db->query("set names 'utf8'");
 
 

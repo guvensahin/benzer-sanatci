@@ -26,7 +26,8 @@ class Lastfm
 	 */
 	public function __construct()
 	{
-		$this->api_key = $lastfm_api_key;
+		$configs = include('config_sensitive.php');
+		$this->api_key = $configs['lastfm_api_key'];
 		
 		global $db;
 		$this->db = $db;
@@ -365,12 +366,34 @@ class Lastfm
 			if ($name)
 			{
 				$datetime = date('Y-m-d H:i:s');
-			
-				// log atılır
-				$this->db->query("insert into LastViewed (ArtistName, DateTime) values ('$name', '$datetime')");
 
-				// son 20 kayıt hatiç silinir
-				$this->db->query("delete from LastViewed order by DateTime asc limit 20");
+				// kontrol edilir
+				$exist = $this->db->get_var("select name from last_viewed where name = '$name'") != "";
+				
+				// update
+				if ($exist)
+				{
+					$this->db->query("update last_viewed set datetime = '$datetime' where name = '$name'");
+				}
+				// insert
+				else
+				{
+					$this->db->query("insert into last_viewed (name, datetime) values ('$name', '$datetime')");
+				}
+			
+				// son 10 kayıt hariç silinir
+				$this->db->query("
+							DELETE FROM last_viewed
+								WHERE name NOT IN (
+								  SELECT name
+								  FROM (
+									SELECT name
+									FROM last_viewed
+									ORDER BY datetime DESC
+									LIMIT 10 -- keep this many records
+								  ) foo
+								);
+				");
 			}
 		}
 	}

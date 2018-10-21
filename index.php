@@ -20,6 +20,8 @@ $artists[] = 'Muse';
 $artists[] = 'Nirvana';
 $artists[] = 'Arctic Monkeys';
 $artists[] = 'Anathema';
+$artists[] = 'Lana Del Rey';
+$artists[] = 'Moonspell';
 
 
 $artist_count = count($artists);

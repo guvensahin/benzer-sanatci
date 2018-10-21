@@ -2,27 +2,27 @@
 
 
 <div class="list-left">
-	<h2>Son görüntülenenler</h2>
-    
+    <h2>Son görüntülenenler</h2>
+
     {foreach from=$results key=k item=row}
     <!-- start list item -->
     <div class="list-item">
         <div class="list-item-left">
-        	<a href="{$art.share_url.$k}">
-            <img class="last_viewed_img{$k}" src="" alt="{$row->ArtistName|escape:'html'}" />
+            <a href="{$art.share_url.$k}">
+                <img class="last_viewed_img{$k}" src="" alt="{$row->name|escape:'html'}" />
             </a>
         </div>
         <div class="list-item-right">
-            <a class="name_l{$k} last_viewed" href="{$art.share_url.$k}">{$row->ArtistName|escape:'html'}</a>
+            <a class="name_l{$k} last_viewed" href="{$art.share_url.$k}">{$row->name|escape:'html'}</a>
             <span>
-            <abbr class="timeago" title="{$art.datetime.$k}">{$row->Datetime}</abbr>
+                <abbr class="timeago" title="{$art.datetime.$k}">{$row->datetime}</abbr>
             </span>
         </div>
-    <div class="clear"></div>
+        <div class="clear"></div>
     </div>
     <!-- end list item -->
     {/foreach}
-    
+
 </div><!-- end list left -->
 
 
@@ -31,28 +31,25 @@
 
 <div class="list-right">
     <h2>Lastfm en popüler</h2>
-    
+
     {section name=foo loop=$list_r.name}
     <!-- start list item -->
     <div class="list-item">
         <div class="list-item-left">
-        	<a href="{$list_r.share_url[foo]}">
-            <img src="{$list_r.large[foo]}" alt="{$list_r.name[foo]}" />
+            <a href="{$list_r.share_url[foo]}">
+                <img src="{$list_r.large[foo]}" alt="{$list_r.name[foo]}" />
             </a>
         </div>
         <div class="list-item-right">
             <a class="name_r{$smarty.section.foo.index}" href="{$list_r.share_url[foo]}">{$list_r.name[foo]}</a>
             <span># <b>{$smarty.section.foo.index+1}</b></span>
         </div>
-    <div class="clear"></div>
+        <div class="clear"></div>
     </div>
     <!-- end list item -->
     {/section}
 
 </div><!-- end list right -->
-
-
-
 <!-- clear -->
 <div class="clear"></div>
 
@@ -60,17 +57,31 @@
 
 <!-- form -->
 <div class="gizli">
-<form method="post" action="./result.php" id="form1">
-    <div><input type="hidden" name="q" id="search-input" value="" /></div>
-    <div><input type="hidden" name="mbid" value="" /></div>
-</form>
+    <form method="post" action="./result.php" id="form1">
+        <div><input type="hidden" name="q" id="search-input" value="" /></div>
+        <div><input type="hidden" name="mbid" value="" /></div>
+    </form>
 </div>
 <!-- // form -->
 
 
+<br />
+<br />
 
-
-
+<!-- ads -->
+{literal}
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- bs - Yazı Sonu Esnek Kutu -->
+<ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-2453073529147932"
+        data-ad-slot="5877482872"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+{/literal}
 
 
 {include file="footer.tpl"}

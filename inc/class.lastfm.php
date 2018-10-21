@@ -405,7 +405,7 @@ class Lastfm
 	 * @param int $limit döndürülecek sonuç sayısı.varsayılan olarak 10.
 	 * @return array
 	 */
-	public function get_top_artists_2($country='united states',$limit=5)
+	public function get_top_artists_2($country='united states',$limit=10)
 	{
 		$post_fields = "method=geo.gettopartists&country=$country&limit=$limit";
 		

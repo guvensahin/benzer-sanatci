@@ -45,34 +45,35 @@ class Lastfm
 		// her fonksiyonda yazmaya gerek kalmaması için otomatik eklenir
 		$post_fields = "api_key=$this->api_key&" . $post_fields;
 		
-		// user agent
-		$user_agent = 'Mozilla/5.0 (Windows NT 6.1; rv:8.0) Gecko/20100101 Firefox/8.0';
-		
-		
 		// curl başlar
 		$ch = curl_init();
 		
 		// curl ayarları
 		curl_setopt($ch, CURLOPT_URL, "http://ws.audioscrobbler.com/2.0/");
-		curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 		curl_setopt($ch, CURLOPT_POST, TRUE);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);
-		
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+
 		$data = curl_exec($ch);
+		$errorMsg = curl_error($ch);
 		curl_close($ch);
 		
-		$xml = simplexml_load_string($data);
-		
-		if (!$xml)
+		if (!$data)
 		{
-			$this->error = 'curl yada simplexml_load_string başarısız oldu.';
+			$msg = "curl başarısız: " . $errorMsg; 
+
+			$this->error = $msg;
 			return FALSE;
 		}
-		else
+
+		$xml = simplexml_load_string($data);
+		if (!$xml)
 		{
-			return $xml;
+			$this->error = 'simplexml_load_string başarısız.';
+			return FALSE;
 		}
+		
+		return $xml;
 	}
 	
 	/**

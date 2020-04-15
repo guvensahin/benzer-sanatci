@@ -1,11 +1,11 @@
 <?php
 require_once('inc/config.php');
-$smarty->assign('title',$site['isim'].' | yeni şarkılar, sanatçılar ve gruplar keşfedin');
+$smarty->assign('title',$site['title']);
 
 
 
 // auto complete diğer js scriptler ile çakıştığından sadece anasayfada projeye dahil ediyoruz
-$ac = '<script type="text/javascript" src="./inc/js/autocomplete.js"></script>';
+$ac = '<script type="text/javascript" src="/inc/js/autocomplete.js"></script>';
 $smarty->assign('autocomplete',$ac);
 
 

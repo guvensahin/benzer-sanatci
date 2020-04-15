@@ -3,93 +3,53 @@ header('Content-Type:text/html; charset=utf-8');
 date_default_timezone_set('Europe/Istanbul');
 
 // show errors
-/*
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-*/
-
-// tema
-$tema_site	= 'default';
-$tema_admin = 'default';
 
 
 // genel ayarlar
-$site['isim']	= 'benzer sanatçı';
-$site['adres'] 	= 'benzersanatci.guvensahin.com';
-
-$description = 'Sevdiğiniz sanatçıların benzerlerini bularak yeni şarkılar, sanatçılar ve müzik grupları keşfetmenize yardımcı olur.';
-$keywords	 = 'benzer sanatçılar, müzik önerileri, müzik keşfet, benzer müzikler, müzik tarzı, müzik türü, yeni gruplar, müzik grupları, şarkı önerileri, benzer şarkılar';
-
-
-// smarty eğer ana dizinde çalışacak ise "1" - "http://ayax-it.com" gibi.
-// ana dizin içerisindeki bir klasörde çalışacak ise "2" olmalıdır - "http://localhost/ayax" gibi.
-$smarty_position = 1;
-
-
-
+$site['title']			= 'benzer sanatçı | yeni şarkılar, sanatçılar ve gruplar keşfedin';
+$site['url'] 			= 'benzersanatci.guvensahin.com';
+$site['template']		= './templates/default/';
+$site['description']	= 'Sevdiğiniz sanatçıların benzerlerini bularak yeni şarkılar, sanatçılar ve müzik grupları keşfetmenize yardımcı olur.';
+$site['keywords']		= 'benzer sanatçılar, müzik önerileri, müzik keşfet, benzer müzikler, müzik tarzı, müzik türü, yeni gruplar, müzik grupları, şarkı önerileri, benzer şarkılar';
 
 
 // ezSQL
+$configs = include('config_sensitive.php');
+
 require_once('ez_sql/ez_sql_core.php');  // ezSQL çekirdeği.
 require_once('ez_sql/ez_sql_mysql.php'); // ezSQL mysql bileşeni.
 
-
-$configs = include('config_sensitive.php');
 $db = new ezSQL_mysql($configs['db_user'], $configs['db_pass'], $configs['db_name'], $configs['db_host']);
 //$db->query("set names 'utf8'");
 
 
 
-
-
-// smarty
-// bulunulan konuma göre ilgili tema seçilir
-
-// sayfanın çalıştığı adresi alıyoruz ve bölüyoruz
-$_bol = explode('/',$_SERVER['SCRIPT_NAME']);
-
-if ($_bol[$smarty_position] == 'admin')
-{
-	$tema_gecerli = $tema_admin;
-}
-else
-{
-	$tema_gecerli = $tema_site;
-}
-$tema_gecerli = './templates/' . $tema_gecerli . '/';
-
-// login ve logout sayfaları için istisna belirtiliyor
-if ($_bol[$smarty_position] == 'login.php' or $_bol[$smarty_position] == 'logout.php')
-{
-	$tema_gecerli = './templates/login/';
-}
-
-
-
-// smartyi çağır
+// smarty'i çağır
 require_once('smarty/Smarty.class.php');
 $smarty = new Smarty;
 
-$smarty->template_dir = $tema_gecerli;
-$smarty->compile_dir  = $tema_gecerli . 'compile/';
+$smarty->template_dir = $site['template'];
+$smarty->compile_dir  = $site['template'] . 'compile/';
 
 
-// varsayılan assignlar
-$smarty->assign('site',$site);
-$smarty->assign('description',$description);
-$smarty->assign('keywords',$keywords);
+// varsayılan assign'lar
+$smarty->assign('site', $site);
+$smarty->assign('description', $site['description']);
+$smarty->assign('keywords', $site['keywords']);
 
 
 
 
 // varsayılan fonksiyonlar
 // sistemin tamamında istenildiği zaman çağrılabilir
-function mesaj($metin, $divclass, $assign=FALSE)
+function mesaj($text, $className, $assign=FALSE)
 {
 	global $smarty;
 	
-	$html = "<div class='$divclass'>$metin</div>";
+	$html = "<div class='$className'>$text</div>";
 	
 	if ($assign){$smarty->assign('mesaj',$html);}
 	else {return $html;}
@@ -108,7 +68,7 @@ function share_url($artist_name)
 	$output = low_case($artist_name);
 	$output = urlencode($output);
 	
-	$output = 'http://' . $site['adres'] . '/result.php?q=' . $output;
+	$output = 'http://' . $site['url'] . '/result.php?q=' . $output;
 	
 	return $output;
 }

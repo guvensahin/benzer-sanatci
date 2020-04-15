@@ -8,7 +8,7 @@
     &copy; 2012 - {'Y'|date} |
     <a href="http://guvensahin.com" title="Güven Şahin" class="poshytip">Tasarım ve Geliştirme</a> |
 	<a href="https://github.com/guvensahin/benzer-sanatci">GitHub</a> |
-    <a href="./contact.php">İletişim</a>
+    <a href="/contact.php">İletişim</a>
 </div><!-- end copyright -->
 
 

@@ -81,7 +81,6 @@ else
 
 
 // assign & display
-
 if (!$similar)
 {
 	mesaj($lfm->error,'hata',TRUE);
@@ -102,7 +101,7 @@ else
 	$smarty->assign('similar',$similar);
 	
 	// title
-	$smarty->assign('title',$similar['search'].' benzeri sanatçılar | '.$site['adres']);
+	$smarty->assign('title',$similar['search'].' benzeri sanatçılar | '.$site['url']);
 	
 	// benzeri aratılan sanatçının bilgileri
 	$s_get_info = $lfm->get_info($similar['search']);

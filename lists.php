@@ -1,7 +1,7 @@
 <?php
 require_once('inc/config.php');
 require_once('inc/class.lastfm.php');
-$smarty->assign('title','Listeler | '.$site['adres']);
+$smarty->assign('title','Listeler | '.$site['url']);
 
 $lfm = new Lastfm; // lastfm api helper
 $toplist = $lfm->get_top_artists_2();

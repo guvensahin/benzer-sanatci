@@ -3,10 +3,11 @@ header('Content-Type:text/html; charset=utf-8');
 date_default_timezone_set('Europe/Istanbul');
 
 // show errors
+/*
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
+*/
 
 // genel ayarlar
 $site['title']			= 'benzer sanatçı | yeni şarkılar, sanatçılar ve gruplar keşfedin';

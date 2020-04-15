@@ -64,7 +64,7 @@
 <div id="container">
 
 <div id="header">
-	<div class="logo"><a href="/"><img src="/templates/default/img/logo.png" alt="logo" /></a></div>
+	<div class="logo"><a href="http://{$site.url}"><img src="/templates/default/img/logo.png" alt="logo" /></a></div>
 
 	<div class="menu">
         <div id="nav">

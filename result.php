@@ -122,7 +122,7 @@ else
 		$description = smart_desc($description);
 	}
 	
-	$keywords = $similar['search'] . ', ' . $keywords;
+	$keywords = $similar['search'] . ' benzeri sanatçılar';
 	
 	$smarty->assign('description',$description);
 	$smarty->assign('keywords',$keywords);

@@ -1,11 +1,10 @@
 <?php
 require_once('inc/config.php');
-require_once('inc/class.lastfm.php');
 
 
 if ($_POST)
 {
-	$lfm = new Lastfm; // lastfm api helper
+	$lfm = new LastfmUtil();
 	
 	$artist = $lfm->get_info($_POST['q']);
 	

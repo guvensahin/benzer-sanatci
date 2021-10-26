@@ -12,9 +12,7 @@
  */
 
 // ------------------------------------------------------------------------
-
-
-class Lastfm
+class LastfmUtil
 {
 	public $api_key; // lastfm api key
 	public $error; // meydana gelen hatayı saklar
@@ -25,12 +23,12 @@ class Lastfm
 	 * değişkenlere varsayılan değerler atanır
 	 */
 	public function __construct()
-	{
-		$configs = include('config_sensitive.php');
-		$this->api_key = $configs['lastfm_api_key'];
-		
+	{		
 		global $db;
 		$this->db = $db;
+
+		global $configs;
+		$this->api_key = $configs['lastfm_api_key'];
 	}
 	
 	/**
@@ -55,6 +53,7 @@ class Lastfm
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 
 		$data = curl_exec($ch);
+		
 		$errorMsg = curl_error($ch);
 		curl_close($ch);
 		
@@ -89,7 +88,7 @@ class Lastfm
 			$imgurl = './templates/default/img/no_img.png';
 		}
 		
-		return $imgurl;
+		return (string) $imgurl;
 	}
 	
 	/**
@@ -100,7 +99,7 @@ class Lastfm
 	 * @param int $limit istenilen benzer sanatçı sayısı
 	 * @return array
 	 */
-	public function get_similar($name='',$mbid='',$limit)
+	public function get_similar($name='',$mbid='',$limit='')
 	{
 		$post_fields = "method=artist.getsimilar&limit=$limit";
 		
@@ -137,21 +136,24 @@ class Lastfm
 		$artist['search'] = (string) $xml->similarartists['artist'];
 		
 		// benzerini aradığımız sanatçının linki
-		$artist['searched_share_url'] = share_url($artist['search']);
+		$artist['searched_share_url'] = AppUtil::share_url($artist['search'], true);
 		
-		
+		$index = 0;
 		foreach ($xml->similarartists->artist as $val)
 		{
-			$artist['name'][] 	  	= (string) $val->name;
-			$artist['mbid'][] 	  	= (string) $val->mbid;
-			$artist['match'][] 	 	= (string) $val->match;
-			$artist['url'][] 		= (string) $val->url;
-			$artist['small'][] 	    = $this->check_image((string) $val->image[0]);
-			$artist['medium'][] 	= $this->check_image((string) $val->image[1]);
-			$artist['large'][] 	    = $this->check_image((string) $val->image[2]);
-			$artist['extralarge'][] = $this->check_image((string) $val->image[3]);
-			$artist['mega'][] 	    = $this->check_image((string) $val->image[4]);
-			$artist['share_url'][]  = share_url((string) $val->name);	// aratılan sanatçının benzeri olarak listelenen her kaydın linki
+			$artist['result'][$index]['index'] 	  	= $index;
+			$artist['result'][$index]['name'] 	  	= (string) $val->name;
+			$artist['result'][$index]['mbid'] 	  	= (string) $val->mbid;
+			$artist['result'][$index]['match'] 	 	= (string) $val->match;
+			$artist['result'][$index]['url'] 			= (string) $val->url;
+			$artist['result'][$index]['small'] 	    = $this->check_image((string) $val->image[0]);
+			$artist['result'][$index]['medium'] 		= $this->check_image((string) $val->image[1]);
+			$artist['result'][$index]['large'] 		= $this->check_image((string) $val->image[2]);
+			$artist['result'][$index]['extralarge']	= $this->check_image((string) $val->image[3]);
+			$artist['result'][$index]['mega'] 	    = $this->check_image((string) $val->image[4]);
+			$artist['result'][$index]['share_url']	= AppUtil::share_url((string) $val->name);	// aratılan sanatçının benzeri olarak listelenen her kaydın linki
+
+			$index++;
 		}
 		
 		// son olarak en çok aranılanları belirlemek için db'ye kaydediyoruz
@@ -268,44 +270,7 @@ class Lastfm
 		return $artist;
 	}
 	
-	/**
-	 * belirtilen sanatçının youtube aramasındaki ilk videosunu getirir
-	 *
-	 * @param string $name sanatçı ismi
-	 * @return string
-	 */
-	public function get_video($name)
-	{
-		// youtube apiye istekte bulunuyoruz
-		// videolar varsayılan olarak ilgiye göre yani relevance 'a göre geliyor
-		$xml = simplexml_load_file("http://gdata.youtube.com/feeds/api/videos?q=$name&max-results=1");
-		
-		if (!$xml)
-		{
-			$this->error = 'simplexml_load_string başarısız oldu.';
-			return FALSE;
-		}
-		
-		
-		foreach ($xml->entry as $entry)
-		{
-			// get nodes in media: namespace for media information
-			$media = $entry->children('http://search.yahoo.com/mrss/');
-			
-			// get video player URL
-			$attrs = $media->group->player->attributes();
-			$watch = (string) $attrs['url'];
-		}
-		
-		if (!isset($watch))
-		{
-			return FALSE;
-		}
-		else
-		{
-			return $watch;
-		}
-	}
+	
 	
 	/**
 	 * anasayfa da kullanıyoruz
@@ -334,6 +299,8 @@ class Lastfm
 		// dizi
 		// döngü 4 defa döner ve üretilen her sayı birbirinden farklı olur 
 		$arr = array();
+		$index = 0;
+		
 		while (count($arr) < 4)
 		{
 			$random = rand(0,$limit-1);
@@ -342,11 +309,13 @@ class Lastfm
 			{
 				$arr[] = $random;
 				
-				$artist_name	   		= (string) $xml->topartists->artist[$random]->name;
-				$artist['name'][]  		= $artist_name;
-				$artist['share_url'][]	= share_url($artist_name);
-				$artist['large'][] 		= (string) $xml->topartists->artist[$random]->image[2];
-				$artist['rank'][]  		= (string) $xml->topartists->artist[$random]['rank'];
+				$artist_name	   				= (string) $xml->topartists->artist[$random]->name;
+				$artist[$index]['name']  		= $artist_name;
+				$artist[$index]['share_url']	= AppUtil::share_url($artist_name);
+				$artist[$index]['large'] 		= (string) $xml->topartists->artist[$random]->image[2];
+				$artist[$index]['rank']  		= (string) $xml->topartists->artist[$random]['rank'];
+
+				$index++;
 			}
 		}
 		
@@ -361,26 +330,19 @@ class Lastfm
 	 */
 	public function add_artist($name)
 	{
-		if (!is_bot())
+		if (!AppUtil::is_bot())
 		{
-			$name = $this->db->escape($name);
+			// TODO bak
+			//$name = $this->db->escape($name);
 			if ($name)
 			{
 				$datetime = date('Y-m-d H:i:s');
 
-				// kontrol edilir
-				$exist = $this->db->get_var("select name from last_viewed where name = '$name'") != "";
+				// daha önce varsa silinir
+				$this->db->query("delete from last_viewed where name = '$name'");
 				
-				// update
-				if ($exist)
-				{
-					$this->db->query("update last_viewed set datetime = '$datetime' where name = '$name'");
-				}
-				// insert
-				else
-				{
-					$this->db->query("insert into last_viewed (name, datetime) values ('$name', '$datetime')");
-				}
+				// yeniden eklenir
+				$this->db->query("insert into last_viewed (name, datetime) values ('$name', '$datetime')");
 			
 				// son 15 kayıt hariç silinir
 				$this->db->query("
@@ -423,18 +385,22 @@ class Lastfm
 		
 		
 		// dizi
+		$index = 0;
 		foreach ($xml->topartists->artist as $val)
 		{
-			$artist['name'][] 	  	= (string) $val->name;
-			$artist['mbid'][] 	  	= (string) $val->mbid;
-			$artist['url'][] 		= (string) $val->url;
-			$artist['listeners'][] 	= (string) $val->listeners;
-			$artist['small'][] 	    = (string) $val->image[0];
-			$artist['medium'][] 	= (string) $val->image[1];
-			$artist['large'][] 	    = (string) $val->image[2];
-			$artist['extralarge'][] = (string) $val->image[3];
-			$artist['mega'][] 	    = (string) $val->image[4];
-			$artist['share_url'][]	= share_url((string) $val->name);
+			$artist[$index]['index']		= (string) $index;
+			$artist[$index]['name'] 	  	= (string) $val->name;
+			$artist[$index]['mbid'] 	  	= (string) $val->mbid;
+			$artist[$index]['url'] 			= (string) $val->url;
+			$artist[$index]['listeners'] 	= (string) $val->listeners;
+			$artist[$index]['small'] 	    = (string) $val->image[0];
+			$artist[$index]['medium'] 		= (string) $val->image[1];
+			$artist[$index]['large'] 	    = (string) $val->image[2];
+			$artist[$index]['extralarge']	= (string) $val->image[3];
+			$artist[$index]['mega'] 	    = (string) $val->image[4];
+			$artist[$index]['share_url']	= AppUtil::share_url((string) $val->name);
+
+			$index++;
 		}
 		
 		return $artist;

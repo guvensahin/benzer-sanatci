@@ -1,11 +1,10 @@
 <?php
 require_once('inc/config.php');
-require_once('inc/class.lastfm.php');
 
 
 if ($_GET)
 {
-	$lfm = new Lastfm; // lastfm api helper
+	$lfm = new LastfmUtil();
 	
 	$search_box = $_GET['term'];
 	$artist = $lfm->search($search_box);

@@ -1,8 +1,7 @@
 <?php
-require_once('inc/config.php');
-require_once('inc/class.lastfm.php');
+	require_once('inc/config.php');
 
-	$lfm = new Lastfm; // lastfm api helper
+	$lfm = new LastfmUtil();
 	
 	$toplist = $lfm->get_top_artists();
 	
@@ -10,12 +9,12 @@ require_once('inc/class.lastfm.php');
 	
 	for ($i=0; $i <= 3; $i++)
 	{
-		$artist_name = $toplist['name'][$i];
-		$share_url   = $toplist['share_url'][$i];
+		$artist_name = $toplist[$i]['name'];
+		$share_url   = $toplist[$i]['share_url'];
 ?>
 
 <div class="random">
-	<a href="<?php echo $share_url;?>" title="örneğin: <?php echo $artist_name;?>"><img src="<?php echo $toplist['large'][$i];?>" alt="<?php echo $artist_name;?>" /></a>
+	<a href="<?php echo $share_url;?>" title="örneğin: <?php echo $artist_name;?>"><img src="<?php echo $toplist[$i]['large'];?>" alt="<?php echo $artist_name;?>" /></a>
 </div>
 
 <?php } // end for ?>

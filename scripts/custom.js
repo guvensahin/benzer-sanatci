@@ -44,11 +44,6 @@ $(function(){
 	
 	
 	
-	// facebook like for ie
-	$('.fblike').attr('allowTransparency', 'true');
-	
-	
-	
 	// search input ve highlight
 	// global
 	sval = 'Sanatçı ara...';
@@ -158,87 +153,27 @@ $(function(){
 		}) // end ajax
 	});
 	
-	
-	
-	// contact.php de matematik işlemini yükler
-	$('span#soru_text').load('./soru.php');
-	
-	
+
+	// anasayfa autocomplete
+	if ($('#search-input').length > 0)
+	{
+		// auto complete
+		$("#search-input").autocomplete({
+			minLength: 1,
+			source: 'suggest.php',
+			select: function (event, ui) {
+				$('#search-input').val(ui.item.label);
+				$('input#mbid').val(ui.item.mbid); // hidden input
+				$('form#form1').submit();
+			} // end select
+		})
+			.data("autocomplete")._renderItem = function (ul, item) {
+				return $("<li></li>")
+					.data("item.autocomplete", item)
+					.append("<a><div class='suggest-img'><img src='" + item.img + "' alt='' /></div>" + item.label + "<div class='clear'></div></a>")
+					.appendTo(ul);
+			}; // end auto complete
+	}
 	
 	
 }); // end document ready
-
-
-
-
-// benzer sanatçıların youtube'daki ilk videolarını getirir
-function get_video($index)
-{
-	var cn = '.y' + $index;
-		q  = $('.name' + $index).text();
-		q  = q.replace(/'/g,"");
-
-
-	// aynı sayfada daha önce istek yapılıp youtube linki bulunmuş ise tekrardan yapılmasına gerek kalmaz
-	var ylink = $(cn).attr('href');
-
-	if (ylink == '#')
-	{
-		$.ajax({
-		type	: 'POST',
-		url		: 'get_video.php',
-		data	: 'q=' + q,
-		success	: function(cevap)
-					{
-						if (cevap == 'hata')
-						{
-							alert('Üzgünüz. Bu sanatçı için örnek video bulamadık.');
-						}
-						else
-						{
-							$(cn).attr('href',cevap);
-							$(cn).click();
-						}
-					}
-		}) // end ajax
-	}
-	else
-	{
-		$(cn).click();
-	}
-	
-	return false;
-} // end func
-
-
-
-// lists.php de tıklanan sanatçıyı sistemde aratır
-/*
-15.06.2012 güncellemesiyle beraber listedeki sanatçılara direct link ile ulaşılmakta.
-
-function searchx($cn)
-{
-	var q = $('a' + $cn).text();
-	//alert(q);
-	
-	$('input#search-input').val(q);
-	$('form#form1').submit();
-	return false;
-}
-*/
-
-
-
-
-
-// about.php paypal
-function donate()
-{
-	$('form#donate').submit();
-	return false;
-}
-
-
-
-
-
